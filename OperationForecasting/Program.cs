@@ -14,9 +14,11 @@ namespace OperationForecasting
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("Application has been starting");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+           
         }
     }
 }
