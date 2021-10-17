@@ -16,24 +16,44 @@ namespace OperationForecasting
             _CoefRatio = CoefRatio;
         }
 
-        public abstract double GetAmplitudeOfInternalStressFields();
+        /// <summary>
+        /// Амплитуда полей внутренних напряжений.
+        /// </summary>
+        /// <param name="R">время задержки поверхностной акустической волны, нс.</param>
+        public abstract double GetAmplitudeOfInternalStressFields(double R);
 
-        public abstract double GetShearStresses();
+        /// <summary>
+        /// Касательные напряжения.
+        /// </summary>
+        /// <param name="R">время задержки поверхностной акустической волны, нс.</param>
+        public abstract double GetShearStresses(double R);
 
-        public abstract double GetDeformationIndicator1();
+        /// <summary>
+        /// Доля деформации, накопленная в образце до появления устойчивой зоны лока-лизации деформации, от всей деформации материала до разрушения.
+        /// </summary>
+        /// <param name="K">коэффициент затухания поверхностной акустической волны, 1/мкс.</param>
+        public abstract double GetDeformationIndicator1(double K);
 
-        public abstract double GetDeformationIndicator2();
+        /// <summary>
+        /// Доля деформации, накопленная в образце до появления устойчивой зоны лока-лизации деформации, до начала падающей части кривой нагружения (коллапса автоволны) 
+        /// </summary>
+        /// <param name="K">коэффициент затухания поверхностной акустической волны, 1/мкс.</param>
+        public abstract double GetDeformationIndicator2(double K);
 
-        public abstract double GetRatioOfYieldStrengthToElongation();
+        /// <summary>
+        /// Отношение предела текучести к удлинению 
+        /// </summary>
+        /// <param name="K">коэффициент затухания поверхностной акустической волны, 1/мкс.</param>
+        public abstract double GetRatioOfYieldStrengthToElongation(double K);
 
-        public double GetCoefStructuralMechanical()
+        public double GetCoefStructuralMechanical(double R, double K)
         {
-            double tl = GetAmplitudeOfInternalStressFields();
-            double td = GetShearStresses();
-            double a1 = GetDeformationIndicator1();
-            double a2 = GetDeformationIndicator2();
+            double tl = GetAmplitudeOfInternalStressFields(R);
+            double td = GetShearStresses(R);
+            double a1 = GetDeformationIndicator1(K);
+            double a2 = GetDeformationIndicator2(K);
 
-            return (tl / td) * ((a2 - a1) / (a1 + a2) * Math.Log(GetRatioOfYieldStrengthToElongation());
+            return (tl / td) * ((a2 - a1) / (a1 + a2) * Math.Log(GetRatioOfYieldStrengthToElongation(K)));
         }
 
         /*public sealed double RemainingRunningTime()
