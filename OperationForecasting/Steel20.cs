@@ -19,22 +19,22 @@ namespace OperationForecasting
 
         public override double GetShearStresses(double R)
         {
-            return 535.56 - 0.744254329 * R;//Добавить коэфициент к R
+            return 535.56 - 0.744254329 * (5836.3148-1.1573 * R);
         }
 
         public override double GetDeformationIndicator1(double K)
         {
-            return 2.04 - 0.0049163803 * K;
+            return 2.04 - 0.0049163803 * (356.5519+1735.5715*K);
         }
 
         public override double GetDeformationIndicator2(double K)
         {
-            return 2.25-0.005016609 * K;
+            return 2.25-0.005016609 * (356.5519 + 1735.5715 * K);
         }
 
         public override double GetRatioOfYieldStrengthToElongation(double K)
         {
-            return 0.04807765*K - 12.6526;
+            return 0.04807765 * (356.5519 + 1735.5715 * K) - 12.6526;
         }
 
 
