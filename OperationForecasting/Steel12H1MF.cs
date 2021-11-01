@@ -59,6 +59,10 @@ namespace OperationForecasting
             return -1;
         }
 
+        public override string GetSteelName()
+        {
+            return "Сталь 12Х1МФ";
+        }
 
     }
 }

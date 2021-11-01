@@ -12,9 +12,23 @@ namespace OperationForecasting
 {
     public partial class Form1 : Form
     {
+        Handler handler;
         public Form1()
         {
+            this.handler = new Handler();
             InitializeComponent();
+            InitComponentsContent();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void InitComponentsContent()
+        {
+
+        }
+
     }
 }

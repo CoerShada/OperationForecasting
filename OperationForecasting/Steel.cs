@@ -56,10 +56,13 @@ namespace OperationForecasting
             return (tl / td) * ((a2 - a1) / (a1 + a2) * Math.Log(GetRatioOfYieldStrengthToElongation(K)));
         }
 
-        /*public sealed double RemainingRunningTime()
+        public double RemainingRunningTime(double CurrentTime, double R, double K)
         {
-            return 
-        }*/
+            double Kcm = GetCoefStructuralMechanical(R, K);
+            return (CurrentTime * (this._CoefRatio - Kcm)) / Kcm;
+        }
+
+        public abstract string GetSteelName();
 
     }
 }

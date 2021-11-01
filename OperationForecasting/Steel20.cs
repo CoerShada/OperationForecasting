@@ -37,6 +37,9 @@ namespace OperationForecasting
             return 0.04807765 * (356.5519 + 1735.5715 * K) - 12.6526;
         }
 
-
+        public override string GetSteelName()
+        {
+            return "Сталь 20";
+        }
     }
 }
