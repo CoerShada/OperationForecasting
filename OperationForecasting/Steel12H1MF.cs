@@ -10,18 +10,21 @@ namespace OperationForecasting
     {
         public Steel12H1MF(double CoefRatio) : base(CoefRatio) { }
 
-        public override double GetAmplitudeOfInternalStressFields(double R)
+        public override double GetAmplitudeOfInternalStressFields(double V)
         {
+            double R = ConvertHelper.VtoR(V);
             return -28663.05 + 12.7609 * R - 0.0014 * Math.Pow(R, 2);
         }
 
-        public override double GetShearStresses(double R)
+        public override double GetShearStresses(double A)
         {
+            double R = ConvertHelper.AtoR(A);
             return -2.276 * Math.Pow(10, -5) + 95.7175 * R - 0.01 * Math.Pow(R, 2);
         }
 
-        public override double GetDeformationIndicator1(double K)
+        public override double GetDeformationIndicator1(double MNI)
         {
+            double K = ConvertHelper.MNItoK(MNI);
             if (K < 0) 
             {
                 return 0.52 - 3.1536 * K - 64.692 * Math.Pow(K, 2);
@@ -33,8 +36,9 @@ namespace OperationForecasting
             return -1;
         }
 
-        public override double GetDeformationIndicator2(double K)
+        public override double GetDeformationIndicator2(double MNI)
         {
+            double K = ConvertHelper.MNItoK(MNI);
             if (K < 0)
             {
                 return 0.75 - 4.355 * K - 95.4879 * Math.Pow(K, 2);
@@ -46,8 +50,9 @@ namespace OperationForecasting
             return -1;
         }
 
-        public override double GetRatioOfYieldStrengthToElongation(double K)
+        public override double GetRatioOfYieldStrengthToElongation(double MNI)
         {
+            double K = ConvertHelper.MNItoK(MNI);
             if (K < 0)
             {
                 return 1.28 + 20.67 * K + 459.62 * Math.Pow(K, 2);

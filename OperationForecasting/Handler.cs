@@ -22,12 +22,12 @@ namespace OperationForecasting
             return steels;
         }
 
-        public double GetResidualOperatingTime(Steel steel, double currentTime, double R, double K)
+        public double GetResidualOperatingTime(Steel steel, double currentTime, double V, double MNI, double A= -100)
         {
-            return steel.RemainingRunningTime(currentTime, R, K);
+            return steel.RemainingRunningTime(currentTime, V, MNI, A);
         }
 
-        public string GetOutMessage(Steel steel, double currentTime, double R, double K)
+        public string GetOutMessage(Steel steel, double currentTime, double V, double MNI, double A = -100)
         {
             string[] readyStrings =
             {
@@ -36,7 +36,8 @@ namespace OperationForecasting
                 "Остаточный срок эксплуатации рекомендуется продлить на 50 тыс. часов. "
             };
             string outstring;
-            double rrt = GetResidualOperatingTime(steel, currentTime, R, K);
+            double rrt = GetResidualOperatingTime(steel, currentTime, V, MNI, A);
+            Console.WriteLine("rrt" + rrt);
             if(rrt>=0 && rrt < 25000)
             {
                 outstring = readyStrings[0];
@@ -50,6 +51,11 @@ namespace OperationForecasting
                 outstring = readyStrings[2];
             }
             return outstring;
+        }
+
+        public double CoefStructuralMechanical(Steel steel, double V, double MNI, double A = -100)
+        {
+            return steel.GetCoefStructuralMechanical(V, MNI, A);
         }
     }
 }
