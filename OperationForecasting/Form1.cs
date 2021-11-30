@@ -119,5 +119,20 @@ namespace OperationForecasting
                 this.labelRRT.Text = this.handler.GetOutMessage(steel, currentTime, V, MNI, A);
             }
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox SenderCB = (CheckBox)sender;
+            if (SenderCB.Checked)
+            {
+                this.dateTimeBeginExport.Enabled = false;
+                this.dateTimeEndExport.Enabled = false;
+            }
+            else
+            {
+                this.dateTimeBeginExport.Enabled = true;
+                this.dateTimeEndExport.Enabled = true;
+            }
+        }
     }
 }
