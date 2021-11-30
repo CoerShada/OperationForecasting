@@ -33,11 +33,11 @@ namespace OperationForecasting
             {
                 "Остаточный срок эксплуатации не рекомендуется продлять в связи исчер-панием ресурса работоспособности. ",
                 "Остаточный срок эксплуатации рекомендуется продлить на 25 тыс. часов. ",
-                "Остаточный срок эксплуатации рекомендуется продлить на 50 тыс. часов. "
+                "Остаточный срок эксплуатации рекомендуется продлить на 50 тыс. часов. ",
+                "Ошибка! Некорректный ввод данных."
             };
             string outstring;
             double rrt = GetResidualOperatingTime(steel, currentTime, V, MNI, A);
-            Console.WriteLine("rrt" + rrt);
             if(rrt>=0 && rrt < 25000)
             {
                 outstring = readyStrings[0];
@@ -46,9 +46,13 @@ namespace OperationForecasting
             {
                 outstring = readyStrings[1];
             }
-            else
+            else if(rrt >= 50000)
             {
                 outstring = readyStrings[2];
+            }
+            else
+            {
+                outstring = readyStrings[3];
             }
             return outstring;
         }
