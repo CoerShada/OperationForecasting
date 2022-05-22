@@ -6,33 +6,40 @@ namespace OperationForecasting
 {
     class Handler
     {
-        public static string currentSteelName = "";
+        public static readonly Handler Instance = new Handler();
+
+        public static int currentMaterialId = -1;
         public static double currentSigmaL, currentSigmaD, currentA1, currentA2, currentKsm, currentSGamma ,currentRrt, currentR, currentKzat, currentA, currentV, currentMNI;
 
-        public ApplicationContext context;
 
-        private Steel[] steels;
+        private Dictionary<string, Material> _Materials;
         public Handler()
         {
-            this.steels = new Steel[]{
-                new Steel20(0.17),
-                new Steel12H1MF(0.19)
-            };
-            context = new ApplicationContext();
+            UpdateMaterials();
         }
 
-        public Steel[] GetSteels()
+        public void UpdateMaterials()
         {
-            return steels;
+            _Materials = new Dictionary<string, Material>();
+            List <Material> materials = DBHandler.Instance.GetActualMaterials();
+            foreach (Material material in materials)
+            {
+                _Materials.Add(material.GetName(), material);
+            }
         }
 
-        public double GetResidualOperatingTime(Steel steel, double currentTime, double V, double MNI, double A= -100)
+        public Dictionary<string, Material> GetMaterials()
         {
-            SaveParameters(steel, V, MNI, A);
-            return steel.RemainingRunningTime(currentTime, currentSigmaL, currentSigmaD, currentA1, currentA2, MNI);
+            return _Materials;
         }
 
-        public string GetOutMessage(Steel steel, double currentTime, double V, double MNI, double A = -100)
+        public double GetResidualOperatingTime(Material material, double currentTime, double V, double MNI, double A = -100)
+        {
+            SaveParameters(material, V, MNI, A);
+            return material.RemainingRunningTime(currentTime, currentSigmaL, currentSigmaD, currentA1, currentA2, MNI);
+        }
+
+        public string GetOutMessage(Material material, double currentTime, double V, double MNI, double A = -100)
         {
             string[] readyStrings =
             {
@@ -42,7 +49,7 @@ namespace OperationForecasting
                 "Ошибка! Некорректный ввод данных."
             };
             string outstring;
-            currentRrt = GetResidualOperatingTime(steel, currentTime, V, MNI, A);
+            currentRrt = GetResidualOperatingTime(material, currentTime, V, MNI, A);
             if(currentRrt >= 0 && currentRrt < 25000)
             {
                 outstring = readyStrings[0];
@@ -59,14 +66,12 @@ namespace OperationForecasting
             {
                 outstring = readyStrings[3];
             }
-            Console.WriteLine(currentA1);
-            Log record = new Log(currentSteelName, currentR, currentKsm, currentV, currentA, currentMNI, currentSigmaL, currentSigmaD, currentA1, currentA2, currentSGamma,currentKsm, currentRrt, outstring, DateTime.Today);
-            context.Logs.Add(record);
-            context.SaveChanges();
+            Log record = new Log(currentMaterialId, currentR, currentKsm, currentV, currentA, currentMNI, currentSigmaL, currentSigmaD, currentA1, currentA2, currentSGamma,currentKsm, currentRrt, outstring, DateTime.Today);
+            DBHandler.Instance.AddLog(record);
             return outstring;
         }
 
-        public void SaveParameters(Steel steel, double V, double MNI, double A = -100)
+        public void SaveParameters(Material material, double V, double MNI, double A = -100)
         {
 
             if (A == -100)
@@ -86,37 +91,34 @@ namespace OperationForecasting
                 currentV = V;
                 currentMNI = MNI;
             }
-            currentSteelName = steel.GetSteelName();
-            currentSigmaL = steel.GetAmplitudeOfInternalStressFields(V);
-            currentSigmaD = steel.GetShearStresses(A);
-            currentA1 = steel.GetDeformationIndicator1(MNI);
-            currentA2 = steel.GetDeformationIndicator2(MNI);
-            currentSGamma = steel.GetRatioOfYieldStrengthToElongation(MNI);
-            currentKsm = steel.CoefStructuralMechanical(currentSigmaL, currentSigmaD, currentA1, currentA2, currentSGamma);
+            currentMaterialId = material.GetId();
+            currentSigmaL = material.GetAmplitudeOfInternalStressFields(V);
+            currentSigmaD = material.GetShearStresses(A);
+            currentA1 = material.GetDeformationIndicator1(MNI);
+            currentA2 = material.GetDeformationIndicator2(MNI);
+            currentSGamma = material.GetRatioOfYieldStrengthToElongation(MNI);
+            currentKsm = material.CoefStructuralMechanical(currentSigmaL, currentSigmaD, currentA1, currentA2, currentSGamma);
         }
 
-        public double CoefStructuralMechanical(Steel steel, double V, double MNI, double A = -100)
+        public double CoefStructuralMechanical(Material material, double V, double MNI, double A = -100)
         {
-            SaveParameters(steel, V, MNI, A);
+            SaveParameters(material, V, MNI, A);
             return currentKsm;
         }
 
         public Log[] Logs(DateTime from, DateTime to, bool allVisible)
         {
-            List<Log> allLogs = context.Logs.ToList();
+            List<Log> allLogs = DBHandler.Instance.GetActualLogs();
             List<Log> logs = new List<Log>();
-
 
             foreach (Log log in allLogs)
             {
 
-                if (allVisible|| (log.getDate().AddDays(1) >= from && log.getDate() <= to.AddDays(1)))
+                if (allVisible || (log.getDate() >= from.AddDays(-1) && log.getDate() <= to.AddDays(1)))
                 {
                     logs.Add(log);
                 }
             }
-
-
             return logs.ToArray();
         }
     }

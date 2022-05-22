@@ -1,7 +1,7 @@
 ﻿
 namespace OperationForecasting
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -29,7 +29,20 @@ namespace OperationForecasting
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label5;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.Windows.Forms.Label label11;
+            System.Windows.Forms.Label label12;
+            System.Windows.Forms.Label label13;
+            System.Windows.Forms.Label label14;
+            System.Windows.Forms.Label label15;
+            System.Windows.Forms.Label label16;
+            System.Windows.Forms.Label label17;
+            System.Windows.Forms.Label label18;
+            System.Windows.Forms.Label label19;
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxR = new System.Windows.Forms.TextBox();
             this.labelR = new System.Windows.Forms.Label();
@@ -63,17 +76,86 @@ namespace OperationForecasting
             this.checkBoxAllTime = new System.Windows.Forms.CheckBox();
             this.buttonExport = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabPageMaterialsRegistry = new System.Windows.Forms.TabPage();
+            this.RegistryMaterialsButtonDelete = new System.Windows.Forms.Button();
+            this.RegistryMaterialsButtonEdit = new System.Windows.Forms.Button();
+            this.RegistryMaterialsButtonCreate = new System.Windows.Forms.Button();
+            this.RegistryMaterialsButtonEditSDelta = new System.Windows.Forms.Button();
+            this.RegistryMaterialsTextBoxFormulaSDelta = new System.Windows.Forms.TextBox();
+            this.RegistryMaterialsButtonEditA2 = new System.Windows.Forms.Button();
+            this.RegistryMaterialsTextBoxFormulaA2 = new System.Windows.Forms.TextBox();
+            this.RegistryMaterialsButtonEditA1 = new System.Windows.Forms.Button();
+            this.RegistryMaterialsTextBoxFormulaA1 = new System.Windows.Forms.TextBox();
+            this.RegistryMaterialsList = new System.Windows.Forms.ListBox();
+            this.RegistryMaterialsTextBoxFormulaSigmaD = new System.Windows.Forms.TextBox();
+            this.RegistryMaterialsButtonEditSigmaD = new System.Windows.Forms.Button();
+            this.RegistryMaterialsTextBoxFormulaSigmaL = new System.Windows.Forms.TextBox();
+            this.RegistryMaterialsTextBoxKsm = new System.Windows.Forms.TextBox();
+            this.RegistryMaterialsButtonEditSigmaL = new System.Windows.Forms.Button();
+            this.RegistryMaterialsTextBoxName = new System.Windows.Forms.TextBox();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.tabPageReference = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            label19 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabPageDataBase.SuspendLayout();
             this.groupBoxBeginExport.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPageMaterialsRegistry.SuspendLayout();
             this.tabPageReference.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label2
+            // 
+            label2.Location = new System.Drawing.Point(239, 4);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(67, 23);
+            label2.TabIndex = 17;
+            label2.Text = "Название";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            label3.Location = new System.Drawing.Point(239, 31);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(48, 23);
+            label3.TabIndex = 18;
+            label3.Text = "К";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label4.Location = new System.Drawing.Point(284, 31);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(22, 23);
+            label4.TabIndex = 19;
+            label4.Text = "зат.";
+            label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label5
+            // 
+            label5.Location = new System.Drawing.Point(242, 54);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(55, 21);
+            label5.TabIndex = 20;
+            label5.Text = "σ";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button1
             // 
@@ -308,6 +390,7 @@ namespace OperationForecasting
             // 
             this.tabControl.Controls.Add(this.tabMain);
             this.tabControl.Controls.Add(this.tabPageDataBase);
+            this.tabControl.Controls.Add(this.tabPageMaterialsRegistry);
             this.tabControl.Controls.Add(this.tabPageReference);
             this.tabControl.Location = new System.Drawing.Point(12, 7);
             this.tabControl.Name = "tabControl";
@@ -359,7 +442,7 @@ namespace OperationForecasting
             this.tabPageDataBase.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageDataBase.Size = new System.Drawing.Size(575, 272);
             this.tabPageDataBase.TabIndex = 1;
-            this.tabPageDataBase.Text = "База данных";
+            this.tabPageDataBase.Text = "История";
             this.tabPageDataBase.UseVisualStyleBackColor = true;
             // 
             // groupBoxBeginExport
@@ -378,7 +461,8 @@ namespace OperationForecasting
             this.dateTimeFrom.Name = "dateTimeFrom";
             this.dateTimeFrom.Size = new System.Drawing.Size(154, 20);
             this.dateTimeFrom.TabIndex = 1;
-            this.dateTimeFrom.ValueChanged += new System.EventHandler(this.onValueChanged);
+            this.dateTimeFrom.Value = new System.DateTime(2022, 5, 23, 0, 0, 0, 0);
+            this.dateTimeFrom.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // groupBox1
             // 
@@ -396,8 +480,8 @@ namespace OperationForecasting
             this.dateTimeTo.Name = "dateTimeTo";
             this.dateTimeTo.Size = new System.Drawing.Size(154, 20);
             this.dateTimeTo.TabIndex = 2;
-            this.dateTimeTo.Value = new System.DateTime(2021, 11, 30, 21, 26, 11, 0);
-            this.dateTimeTo.ValueChanged += new System.EventHandler(this.onValueChanged);
+            this.dateTimeTo.Value = new System.DateTime(2022, 5, 23, 0, 0, 0, 0);
+            this.dateTimeTo.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // checkBoxAllTime
             // 
@@ -418,7 +502,8 @@ namespace OperationForecasting
             this.buttonExport.TabIndex = 3;
             this.buttonExport.Text = "Выгрузить данные из базы";
             this.buttonExport.UseVisualStyleBackColor = true;
-            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            this.buttonExport.Visible = false;
+            this.buttonExport.Click += new System.EventHandler(this.ButtonExport_Click);
             // 
             // dataGridView1
             // 
@@ -431,6 +516,201 @@ namespace OperationForecasting
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(394, 260);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // tabPageMaterialsRegistry
+            // 
+            this.tabPageMaterialsRegistry.Controls.Add(label19);
+            this.tabPageMaterialsRegistry.Controls.Add(label18);
+            this.tabPageMaterialsRegistry.Controls.Add(label16);
+            this.tabPageMaterialsRegistry.Controls.Add(label17);
+            this.tabPageMaterialsRegistry.Controls.Add(label14);
+            this.tabPageMaterialsRegistry.Controls.Add(label15);
+            this.tabPageMaterialsRegistry.Controls.Add(label12);
+            this.tabPageMaterialsRegistry.Controls.Add(label13);
+            this.tabPageMaterialsRegistry.Controls.Add(label11);
+            this.tabPageMaterialsRegistry.Controls.Add(label5);
+            this.tabPageMaterialsRegistry.Controls.Add(label4);
+            this.tabPageMaterialsRegistry.Controls.Add(label3);
+            this.tabPageMaterialsRegistry.Controls.Add(label2);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsButtonDelete);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsButtonEdit);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsButtonCreate);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsButtonEditSDelta);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsTextBoxFormulaSDelta);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsButtonEditA2);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsTextBoxFormulaA2);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsButtonEditA1);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsTextBoxFormulaA1);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsList);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsTextBoxFormulaSigmaD);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsButtonEditSigmaD);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsTextBoxFormulaSigmaL);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsTextBoxKsm);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsButtonEditSigmaL);
+            this.tabPageMaterialsRegistry.Controls.Add(this.RegistryMaterialsTextBoxName);
+            this.tabPageMaterialsRegistry.Controls.Add(this.vScrollBar1);
+            this.tabPageMaterialsRegistry.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMaterialsRegistry.Name = "tabPageMaterialsRegistry";
+            this.tabPageMaterialsRegistry.Size = new System.Drawing.Size(575, 272);
+            this.tabPageMaterialsRegistry.TabIndex = 3;
+            this.tabPageMaterialsRegistry.Text = "Реестр Материалов";
+            this.tabPageMaterialsRegistry.UseVisualStyleBackColor = true;
+            // 
+            // RegistryMaterialsButtonDelete
+            // 
+            this.RegistryMaterialsButtonDelete.Location = new System.Drawing.Point(306, 243);
+            this.RegistryMaterialsButtonDelete.Name = "RegistryMaterialsButtonDelete";
+            this.RegistryMaterialsButtonDelete.Size = new System.Drawing.Size(243, 25);
+            this.RegistryMaterialsButtonDelete.TabIndex = 16;
+            this.RegistryMaterialsButtonDelete.Text = "Удалить выбранную запись";
+            this.RegistryMaterialsButtonDelete.UseVisualStyleBackColor = true;
+            this.RegistryMaterialsButtonDelete.Click += new System.EventHandler(this.RegistryMaterialsButtonDelete_Click);
+            // 
+            // RegistryMaterialsButtonEdit
+            // 
+            this.RegistryMaterialsButtonEdit.Location = new System.Drawing.Point(306, 212);
+            this.RegistryMaterialsButtonEdit.Name = "RegistryMaterialsButtonEdit";
+            this.RegistryMaterialsButtonEdit.Size = new System.Drawing.Size(243, 25);
+            this.RegistryMaterialsButtonEdit.TabIndex = 15;
+            this.RegistryMaterialsButtonEdit.Text = "Обновить выбранную запись";
+            this.RegistryMaterialsButtonEdit.UseVisualStyleBackColor = true;
+            this.RegistryMaterialsButtonEdit.Click += new System.EventHandler(this.RegistryMaterialsButtonEdit_Click);
+            // 
+            // RegistryMaterialsButtonCreate
+            // 
+            this.RegistryMaterialsButtonCreate.Location = new System.Drawing.Point(306, 187);
+            this.RegistryMaterialsButtonCreate.Name = "RegistryMaterialsButtonCreate";
+            this.RegistryMaterialsButtonCreate.Size = new System.Drawing.Size(243, 25);
+            this.RegistryMaterialsButtonCreate.TabIndex = 14;
+            this.RegistryMaterialsButtonCreate.Text = "Создать новую запись";
+            this.RegistryMaterialsButtonCreate.UseVisualStyleBackColor = true;
+            this.RegistryMaterialsButtonCreate.Click += new System.EventHandler(this.RegistryMaterialsButtonCreate_Click);
+            // 
+            // RegistryMaterialsButtonEditSDelta
+            // 
+            this.RegistryMaterialsButtonEditSDelta.Location = new System.Drawing.Point(512, 158);
+            this.RegistryMaterialsButtonEditSDelta.Name = "RegistryMaterialsButtonEditSDelta";
+            this.RegistryMaterialsButtonEditSDelta.Size = new System.Drawing.Size(37, 23);
+            this.RegistryMaterialsButtonEditSDelta.TabIndex = 13;
+            this.RegistryMaterialsButtonEditSDelta.Text = "Ред.";
+            this.RegistryMaterialsButtonEditSDelta.UseVisualStyleBackColor = true;
+            this.RegistryMaterialsButtonEditSDelta.Click += new System.EventHandler(this.ButtonFromulaEdit_Click);
+            // 
+            // RegistryMaterialsTextBoxFormulaSDelta
+            // 
+            this.RegistryMaterialsTextBoxFormulaSDelta.Location = new System.Drawing.Point(306, 161);
+            this.RegistryMaterialsTextBoxFormulaSDelta.Name = "RegistryMaterialsTextBoxFormulaSDelta";
+            this.RegistryMaterialsTextBoxFormulaSDelta.Size = new System.Drawing.Size(200, 20);
+            this.RegistryMaterialsTextBoxFormulaSDelta.TabIndex = 12;
+            this.RegistryMaterialsTextBoxFormulaSDelta.TextChanged += new System.EventHandler(this.RegistryMaterialsTextBoxes_TextChanged);
+            // 
+            // RegistryMaterialsButtonEditA2
+            // 
+            this.RegistryMaterialsButtonEditA2.Location = new System.Drawing.Point(512, 132);
+            this.RegistryMaterialsButtonEditA2.Name = "RegistryMaterialsButtonEditA2";
+            this.RegistryMaterialsButtonEditA2.Size = new System.Drawing.Size(37, 23);
+            this.RegistryMaterialsButtonEditA2.TabIndex = 11;
+            this.RegistryMaterialsButtonEditA2.Text = "Ред.";
+            this.RegistryMaterialsButtonEditA2.UseVisualStyleBackColor = true;
+            this.RegistryMaterialsButtonEditA2.Click += new System.EventHandler(this.ButtonFromulaEdit_Click);
+            // 
+            // RegistryMaterialsTextBoxFormulaA2
+            // 
+            this.RegistryMaterialsTextBoxFormulaA2.Location = new System.Drawing.Point(306, 135);
+            this.RegistryMaterialsTextBoxFormulaA2.Name = "RegistryMaterialsTextBoxFormulaA2";
+            this.RegistryMaterialsTextBoxFormulaA2.Size = new System.Drawing.Size(200, 20);
+            this.RegistryMaterialsTextBoxFormulaA2.TabIndex = 10;
+            this.RegistryMaterialsTextBoxFormulaA2.TextChanged += new System.EventHandler(this.RegistryMaterialsTextBoxes_TextChanged);
+            // 
+            // RegistryMaterialsButtonEditA1
+            // 
+            this.RegistryMaterialsButtonEditA1.Location = new System.Drawing.Point(512, 106);
+            this.RegistryMaterialsButtonEditA1.Name = "RegistryMaterialsButtonEditA1";
+            this.RegistryMaterialsButtonEditA1.Size = new System.Drawing.Size(37, 23);
+            this.RegistryMaterialsButtonEditA1.TabIndex = 9;
+            this.RegistryMaterialsButtonEditA1.Text = "Ред.";
+            this.RegistryMaterialsButtonEditA1.UseVisualStyleBackColor = true;
+            this.RegistryMaterialsButtonEditA1.Click += new System.EventHandler(this.ButtonFromulaEdit_Click);
+            // 
+            // RegistryMaterialsTextBoxFormulaA1
+            // 
+            this.RegistryMaterialsTextBoxFormulaA1.Location = new System.Drawing.Point(306, 109);
+            this.RegistryMaterialsTextBoxFormulaA1.Name = "RegistryMaterialsTextBoxFormulaA1";
+            this.RegistryMaterialsTextBoxFormulaA1.Size = new System.Drawing.Size(200, 20);
+            this.RegistryMaterialsTextBoxFormulaA1.TabIndex = 8;
+            this.RegistryMaterialsTextBoxFormulaA1.TextChanged += new System.EventHandler(this.RegistryMaterialsTextBoxes_TextChanged);
+            // 
+            // RegistryMaterialsList
+            // 
+            this.RegistryMaterialsList.BackColor = System.Drawing.SystemColors.Window;
+            this.RegistryMaterialsList.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.RegistryMaterialsList.FormattingEnabled = true;
+            this.RegistryMaterialsList.Location = new System.Drawing.Point(3, 4);
+            this.RegistryMaterialsList.Name = "RegistryMaterialsList";
+            this.RegistryMaterialsList.ScrollAlwaysVisible = true;
+            this.RegistryMaterialsList.Size = new System.Drawing.Size(230, 264);
+            this.RegistryMaterialsList.TabIndex = 7;
+            this.RegistryMaterialsList.SelectedValueChanged += new System.EventHandler(this.RegistryMaterialsList_SelectedValueChanged);
+            // 
+            // RegistryMaterialsTextBoxFormulaSigmaD
+            // 
+            this.RegistryMaterialsTextBoxFormulaSigmaD.Location = new System.Drawing.Point(306, 83);
+            this.RegistryMaterialsTextBoxFormulaSigmaD.Name = "RegistryMaterialsTextBoxFormulaSigmaD";
+            this.RegistryMaterialsTextBoxFormulaSigmaD.Size = new System.Drawing.Size(200, 20);
+            this.RegistryMaterialsTextBoxFormulaSigmaD.TabIndex = 6;
+            this.RegistryMaterialsTextBoxFormulaSigmaD.TextChanged += new System.EventHandler(this.RegistryMaterialsTextBoxes_TextChanged);
+            // 
+            // RegistryMaterialsButtonEditSigmaD
+            // 
+            this.RegistryMaterialsButtonEditSigmaD.Location = new System.Drawing.Point(512, 81);
+            this.RegistryMaterialsButtonEditSigmaD.Name = "RegistryMaterialsButtonEditSigmaD";
+            this.RegistryMaterialsButtonEditSigmaD.Size = new System.Drawing.Size(37, 23);
+            this.RegistryMaterialsButtonEditSigmaD.TabIndex = 5;
+            this.RegistryMaterialsButtonEditSigmaD.Text = "Ред.";
+            this.RegistryMaterialsButtonEditSigmaD.UseVisualStyleBackColor = true;
+            this.RegistryMaterialsButtonEditSigmaD.Click += new System.EventHandler(this.ButtonFromulaEdit_Click);
+            // 
+            // RegistryMaterialsTextBoxFormulaSigmaL
+            // 
+            this.RegistryMaterialsTextBoxFormulaSigmaL.Location = new System.Drawing.Point(306, 57);
+            this.RegistryMaterialsTextBoxFormulaSigmaL.Name = "RegistryMaterialsTextBoxFormulaSigmaL";
+            this.RegistryMaterialsTextBoxFormulaSigmaL.Size = new System.Drawing.Size(200, 20);
+            this.RegistryMaterialsTextBoxFormulaSigmaL.TabIndex = 4;
+            this.RegistryMaterialsTextBoxFormulaSigmaL.TextChanged += new System.EventHandler(this.RegistryMaterialsTextBoxes_TextChanged);
+            // 
+            // RegistryMaterialsTextBoxKsm
+            // 
+            this.RegistryMaterialsTextBoxKsm.Location = new System.Drawing.Point(306, 31);
+            this.RegistryMaterialsTextBoxKsm.Name = "RegistryMaterialsTextBoxKsm";
+            this.RegistryMaterialsTextBoxKsm.Size = new System.Drawing.Size(71, 20);
+            this.RegistryMaterialsTextBoxKsm.TabIndex = 3;
+            this.RegistryMaterialsTextBoxKsm.TextChanged += new System.EventHandler(this.RegistryMaterialsTextBoxes_TextChanged);
+            this.RegistryMaterialsTextBoxKsm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RegistryMaterialsTextBoxKsm_KeyPress);
+            // 
+            // RegistryMaterialsButtonEditSigmaL
+            // 
+            this.RegistryMaterialsButtonEditSigmaL.Location = new System.Drawing.Point(512, 55);
+            this.RegistryMaterialsButtonEditSigmaL.Name = "RegistryMaterialsButtonEditSigmaL";
+            this.RegistryMaterialsButtonEditSigmaL.Size = new System.Drawing.Size(37, 23);
+            this.RegistryMaterialsButtonEditSigmaL.TabIndex = 2;
+            this.RegistryMaterialsButtonEditSigmaL.Text = "Ред.";
+            this.RegistryMaterialsButtonEditSigmaL.UseVisualStyleBackColor = true;
+            this.RegistryMaterialsButtonEditSigmaL.Click += new System.EventHandler(this.ButtonFromulaEdit_Click);
+            // 
+            // RegistryMaterialsTextBoxName
+            // 
+            this.RegistryMaterialsTextBoxName.Location = new System.Drawing.Point(306, 6);
+            this.RegistryMaterialsTextBoxName.Name = "RegistryMaterialsTextBoxName";
+            this.RegistryMaterialsTextBoxName.Size = new System.Drawing.Size(200, 20);
+            this.RegistryMaterialsTextBoxName.TabIndex = 1;
+            this.RegistryMaterialsTextBoxName.TextChanged += new System.EventHandler(this.RegistryMaterialsTextBoxes_TextChanged);
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(552, 4);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(20, 268);
+            this.vScrollBar1.TabIndex = 0;
             // 
             // tabPageReference
             // 
@@ -467,14 +747,100 @@ namespace OperationForecasting
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 1;
             // 
-            // Form1
+            // label11
+            // 
+            label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label11.Location = new System.Drawing.Point(293, 55);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(13, 23);
+            label11.TabIndex = 21;
+            label11.Text = "л";
+            label11.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label12
+            // 
+            label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label12.Location = new System.Drawing.Point(293, 81);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(13, 23);
+            label12.TabIndex = 23;
+            label12.Text = "д";
+            label12.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label13
+            // 
+            label13.Location = new System.Drawing.Point(242, 80);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(55, 21);
+            label13.TabIndex = 22;
+            label13.Text = "σ";
+            label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label14.Location = new System.Drawing.Point(293, 107);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(6, 23);
+            label14.TabIndex = 25;
+            label14.Text = "1";
+            label14.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label15
+            // 
+            label15.Location = new System.Drawing.Point(242, 109);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(56, 21);
+            label15.TabIndex = 24;
+            label15.Text = "α";
+            label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label16
+            // 
+            label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label16.Location = new System.Drawing.Point(293, 133);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(13, 23);
+            label16.TabIndex = 27;
+            label16.Text = "2";
+            label16.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label17
+            // 
+            label17.Location = new System.Drawing.Point(242, 132);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(56, 21);
+            label17.TabIndex = 26;
+            label17.Text = "α";
+            label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label18
+            // 
+            label18.Location = new System.Drawing.Point(242, 160);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(58, 21);
+            label18.TabIndex = 28;
+            label18.Text = "S      /δ";
+            label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label19
+            // 
+            label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label19.Location = new System.Drawing.Point(266, 171);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(19, 10);
+            label19.TabIndex = 29;
+            label19.Text = "0,2";
+            label19.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 320);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.label10);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Структурно-механическй критерий";
             this.tabControl.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);
@@ -484,6 +850,8 @@ namespace OperationForecasting
             this.groupBoxBeginExport.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPageMaterialsRegistry.ResumeLayout(false);
+            this.tabPageMaterialsRegistry.PerformLayout();
             this.tabPageReference.ResumeLayout(false);
             this.tabPageReference.PerformLayout();
             this.ResumeLayout(false);
@@ -531,6 +899,24 @@ namespace OperationForecasting
         private System.Windows.Forms.TabPage tabPageReference;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPageMaterialsRegistry;
+        private System.Windows.Forms.TextBox RegistryMaterialsTextBoxName;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Button RegistryMaterialsButtonEditSigmaL;
+        private System.Windows.Forms.TextBox RegistryMaterialsTextBoxFormulaSigmaL;
+        private System.Windows.Forms.TextBox RegistryMaterialsTextBoxKsm;
+        private System.Windows.Forms.ListBox RegistryMaterialsList;
+        private System.Windows.Forms.TextBox RegistryMaterialsTextBoxFormulaSigmaD;
+        private System.Windows.Forms.Button RegistryMaterialsButtonEditSigmaD;
+        private System.Windows.Forms.TextBox RegistryMaterialsTextBoxFormulaA1;
+        private System.Windows.Forms.Button RegistryMaterialsButtonEditSDelta;
+        private System.Windows.Forms.TextBox RegistryMaterialsTextBoxFormulaSDelta;
+        private System.Windows.Forms.Button RegistryMaterialsButtonEditA2;
+        private System.Windows.Forms.TextBox RegistryMaterialsTextBoxFormulaA2;
+        private System.Windows.Forms.Button RegistryMaterialsButtonEditA1;
+        private System.Windows.Forms.Button RegistryMaterialsButtonDelete;
+        private System.Windows.Forms.Button RegistryMaterialsButtonEdit;
+        private System.Windows.Forms.Button RegistryMaterialsButtonCreate;
     }
 }
 
