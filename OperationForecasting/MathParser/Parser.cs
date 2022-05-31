@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -35,8 +36,10 @@ namespace MathParser
 
         public static void MergeCells(Cell leftCell, Cell rightCell)
         {
+ 
             switch (leftCell.action)
             {
+               
                 case '^':
                     leftCell.value = Math.Pow(leftCell.value, rightCell.value);
                     break;
@@ -63,7 +66,7 @@ namespace MathParser
                 Cell nextCell = listToMerge[index++];
                 while (!CanMergeCells(currentCell, nextCell))
                 {
-                    Merge(nextCell, ref index, listToMerge, true /*mergeOneOnly*/);
+                    Merge(nextCell, ref index, listToMerge, true);
                 }
                 MergeCells(currentCell, nextCell);
                 if (mergeOneOnly)
@@ -83,10 +86,11 @@ namespace MathParser
             for (int i = 0; i < values.Count; i++)
             {
                 string name = values.Keys.ToArray()[i];
-                double value = values.Values.ToArray()[i];
+                string value = values.Values.ToArray()[i].ToString("F", CultureInfo.CreateSpecificCulture("eu-ES"));
 
                 while (data.Contains(name))
                 {
+                    
                     data = data.Substring(0, data.IndexOf(name)) + value + data.Substring(data.IndexOf(name) + name.Length);
                 }
 
@@ -122,8 +126,8 @@ namespace MathParser
 
                         data = data.Substring(data.IndexOf("|") + 1);
 
-                        if ((op.Equals("!=") && notEquals(value1, value2)) || (op.Equals(">=") && largerOrEquals(value1, value2)) || (op.Equals("<=") && smallerOrEquals(value1, value2)) ||
-                            (op.Equals("<") && smaller(value1, value2)) || (op.Equals(">") && larger(value1, value2)) || (op.Equals("=") && equals(value1, value2)))
+                        if ((op.Equals("!=") && NotEquals(value1, value2)) || (op.Equals(">=") && LargerOrEquals(value1, value2)) || (op.Equals("<=") && SmallerOrEquals(value1, value2)) ||
+                            (op.Equals("<") && Smaller(value1, value2)) || (op.Equals(">") && Larger(value1, value2)) || (op.Equals("=") && Equals(value1, value2)))
                         {
                             data = data.Substring(0, data.IndexOf("|"));
                             break;
@@ -206,32 +210,32 @@ namespace MathParser
             return res;
         }
 
-        private static bool larger(double value1, double value2)
+        private static bool Larger(double value1, double value2)
         {
             return value1 > value2;
         }
 
-        private static bool smaller(double value1, double value2)
+        private static bool Smaller(double value1, double value2)
         {
             return value1 < value2;
         }
 
-        private static bool equals(double value1, double value2)
+        private static bool Equals(double value1, double value2)
         {
             return value1 == value2;
         }
 
-        private static bool notEquals(double value1, double value2)
+        private static bool NotEquals(double value1, double value2)
         {
             return value1 != value2;
         }
 
-        private static bool smallerOrEquals(double value1, double value2)
+        private static bool SmallerOrEquals(double value1, double value2)
         {
             return value1 <= value2;
         }
 
-        private static bool largerOrEquals(double value1, double value2)
+        private static bool LargerOrEquals(double value1, double value2)
         {
             return value1 >= value2;
         }

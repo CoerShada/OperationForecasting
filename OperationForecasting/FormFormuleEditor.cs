@@ -105,7 +105,6 @@ namespace OperationForecasting
                     counter++;
                 }
             }
-            Console.WriteLine(counter);
             if (counter % 2 != 0)
             {
                 editor.Text += symbol;

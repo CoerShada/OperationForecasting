@@ -14,15 +14,15 @@ namespace OperationForecasting
         public double V { get; set; }
         public double A { get; set; }
         public double MNI { get; set; }
-        public double AmplitudeOfOnternalStressFields { get; set; }
-        public double ShearStresses { get; set; }
-        public double DeformationIndicator1 { get; set; }
-        public double DeformationIndicator2 { get; set; }
-        public double CoefStructuralMechanical { get; set; }
+        public double SigmaL { get; set; }
+        public double SigmaD { get; set; }
+        public double A1 { get; set; }
+        public double A2 { get; set; }
+        public double Ksm { get; set; }
         public double ResidualOperatingTime { get; set; }
         public string Result { get; set; }
         public string Date { get; set; }
-        public double RatioOfYieldStrengthToElongation { get; set; }
+        public double SDelta { get; set; }
         public DateTime getDate()
         {
             return DateTime.Parse(Date);
@@ -30,7 +30,7 @@ namespace OperationForecasting
 
         public Log() { }
 
-        public Log(int MaterialId, double r, double k, double v, double a, double mNI, double AmplitudeOfOnternalStressFields, double ShearStresses, double DeformationIndicator1, double DeformationIndicator2, double RatioOfYieldStrengthToElongation, double CoefStructuralMechanical, double ResidualOperatingTime, string Result, DateTime Date)
+        public Log(int MaterialId, double r, double k, double v, double a, double mNI, double SigmaL, double SigmaD, double A1, double A2, double SDelta, double Ksm, double ResidualOperatingTime, string Result, DateTime Date)
         {
             this.MaterialId = MaterialId;
             R = r;
@@ -38,14 +38,14 @@ namespace OperationForecasting
             V = v;
             A = a;
             MNI = mNI;
-            this.AmplitudeOfOnternalStressFields = AmplitudeOfOnternalStressFields;
-            this.ShearStresses = ShearStresses;
-            this.DeformationIndicator1 = DeformationIndicator1;
-            this.DeformationIndicator2 = DeformationIndicator2;
-            this.CoefStructuralMechanical = CoefStructuralMechanical;
+            this.SigmaL = SigmaL;
+            this.SigmaD = SigmaD;
+            this.A1 = A1;
+            this.A2 = A2;
+            this.Ksm = Ksm;
             this.ResidualOperatingTime = ResidualOperatingTime;
             this.Result = Result;
-            this.RatioOfYieldStrengthToElongation = RatioOfYieldStrengthToElongation;
+            this.SDelta = SDelta;
             this.Date = Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"));
         }
 

@@ -61,6 +61,8 @@ namespace OperationForecasting
         {
             Context.Logs.Add(record);
             Context.SaveChanges();
+            Console.WriteLine("Saved!");
+
         }
 
 

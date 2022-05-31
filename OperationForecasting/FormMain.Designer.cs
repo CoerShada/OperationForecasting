@@ -33,7 +33,6 @@ namespace OperationForecasting
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label5;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             System.Windows.Forms.Label label11;
             System.Windows.Forms.Label label12;
             System.Windows.Forms.Label label13;
@@ -43,6 +42,7 @@ namespace OperationForecasting
             System.Windows.Forms.Label label17;
             System.Windows.Forms.Label label18;
             System.Windows.Forms.Label label19;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxR = new System.Windows.Forms.TextBox();
             this.labelR = new System.Windows.Forms.Label();
@@ -68,6 +68,7 @@ namespace OperationForecasting
             this.buttonResidualTimeExploitation = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabMain = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabPageDataBase = new System.Windows.Forms.TabPage();
             this.groupBoxBeginExport = new System.Windows.Forms.GroupBox();
             this.dateTimeFrom = new System.Windows.Forms.DateTimePicker();
@@ -157,6 +158,92 @@ namespace OperationForecasting
             label5.Text = "σ";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label11
+            // 
+            label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label11.Location = new System.Drawing.Point(293, 55);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(13, 23);
+            label11.TabIndex = 21;
+            label11.Text = "л";
+            label11.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label12
+            // 
+            label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label12.Location = new System.Drawing.Point(293, 81);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(13, 23);
+            label12.TabIndex = 23;
+            label12.Text = "д";
+            label12.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label13
+            // 
+            label13.Location = new System.Drawing.Point(242, 80);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(55, 21);
+            label13.TabIndex = 22;
+            label13.Text = "σ";
+            label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label14.Location = new System.Drawing.Point(293, 107);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(6, 23);
+            label14.TabIndex = 25;
+            label14.Text = "1";
+            label14.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label15
+            // 
+            label15.Location = new System.Drawing.Point(242, 109);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(56, 21);
+            label15.TabIndex = 24;
+            label15.Text = "α";
+            label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label16
+            // 
+            label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label16.Location = new System.Drawing.Point(293, 133);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(13, 23);
+            label16.TabIndex = 27;
+            label16.Text = "2";
+            label16.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label17
+            // 
+            label17.Location = new System.Drawing.Point(242, 132);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(56, 21);
+            label17.TabIndex = 26;
+            label17.Text = "α";
+            label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label18
+            // 
+            label18.Location = new System.Drawing.Point(242, 160);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(58, 21);
+            label18.TabIndex = 28;
+            label18.Text = "S      /δ";
+            label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label19
+            // 
+            label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label19.Location = new System.Drawing.Point(266, 171);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(19, 10);
+            label19.TabIndex = 29;
+            label19.Text = "0,2";
+            label19.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(313, 163);
@@ -165,7 +252,7 @@ namespace OperationForecasting
             this.button1.TabIndex = 0;
             this.button1.Text = "Рассчитать с-м критерий";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.ButtonCount_Click);
             // 
             // textBoxR
             // 
@@ -277,9 +364,9 @@ namespace OperationForecasting
             this.label8.Location = new System.Drawing.Point(274, 78);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 13);
+            this.label8.Size = new System.Drawing.Size(57, 13);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Марка";
+            this.label8.Text = "Материал";
             // 
             // label9
             // 
@@ -367,7 +454,7 @@ namespace OperationForecasting
             this.checkBoxChoose.TabIndex = 22;
             this.checkBoxChoose.Text = "Расчет через R";
             this.checkBoxChoose.UseVisualStyleBackColor = true;
-            this.checkBoxChoose.CheckedChanged += new System.EventHandler(this.checkBoxChoose_CheckedChanged);
+            this.checkBoxChoose.CheckedChanged += new System.EventHandler(this.CheckBoxChoose_CheckedChanged);
             // 
             // labelKSM
             // 
@@ -384,7 +471,7 @@ namespace OperationForecasting
             this.buttonResidualTimeExploitation.TabIndex = 24;
             this.buttonResidualTimeExploitation.Text = "Расчет остаточного времени эксплуатации";
             this.buttonResidualTimeExploitation.UseVisualStyleBackColor = true;
-            this.buttonResidualTimeExploitation.Click += new System.EventHandler(this.buttonResidualTimeExploitation_Click);
+            this.buttonResidualTimeExploitation.Click += new System.EventHandler(this.ButtonResidualTimeExploitation_Click);
             // 
             // tabControl
             // 
@@ -400,6 +487,7 @@ namespace OperationForecasting
             // 
             // tabMain
             // 
+            this.tabMain.Controls.Add(this.button2);
             this.tabMain.Controls.Add(this.checkBoxChoose);
             this.tabMain.Controls.Add(this.buttonResidualTimeExploitation);
             this.tabMain.Controls.Add(this.button1);
@@ -429,6 +517,15 @@ namespace OperationForecasting
             this.tabMain.TabIndex = 0;
             this.tabMain.Text = "Главная";
             this.tabMain.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(313, 239);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(256, 30);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "Заполнить с датчика";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // tabPageDataBase
             // 
@@ -461,7 +558,6 @@ namespace OperationForecasting
             this.dateTimeFrom.Name = "dateTimeFrom";
             this.dateTimeFrom.Size = new System.Drawing.Size(154, 20);
             this.dateTimeFrom.TabIndex = 1;
-            this.dateTimeFrom.Value = new System.DateTime(2022, 5, 23, 0, 0, 0, 0);
             this.dateTimeFrom.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // groupBox1
@@ -480,7 +576,6 @@ namespace OperationForecasting
             this.dateTimeTo.Name = "dateTimeTo";
             this.dateTimeTo.Size = new System.Drawing.Size(154, 20);
             this.dateTimeTo.TabIndex = 2;
-            this.dateTimeTo.Value = new System.DateTime(2022, 5, 23, 0, 0, 0, 0);
             this.dateTimeTo.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // checkBoxAllTime
@@ -492,7 +587,7 @@ namespace OperationForecasting
             this.checkBoxAllTime.TabIndex = 4;
             this.checkBoxAllTime.Text = "За все время";
             this.checkBoxAllTime.UseVisualStyleBackColor = true;
-            this.checkBoxAllTime.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxAllTime.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // buttonExport
             // 
@@ -747,92 +842,6 @@ namespace OperationForecasting
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 1;
             // 
-            // label11
-            // 
-            label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label11.Location = new System.Drawing.Point(293, 55);
-            label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(13, 23);
-            label11.TabIndex = 21;
-            label11.Text = "л";
-            label11.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label12
-            // 
-            label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label12.Location = new System.Drawing.Point(293, 81);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(13, 23);
-            label12.TabIndex = 23;
-            label12.Text = "д";
-            label12.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label13
-            // 
-            label13.Location = new System.Drawing.Point(242, 80);
-            label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(55, 21);
-            label13.TabIndex = 22;
-            label13.Text = "σ";
-            label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label14
-            // 
-            label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label14.Location = new System.Drawing.Point(293, 107);
-            label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(6, 23);
-            label14.TabIndex = 25;
-            label14.Text = "1";
-            label14.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label15
-            // 
-            label15.Location = new System.Drawing.Point(242, 109);
-            label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(56, 21);
-            label15.TabIndex = 24;
-            label15.Text = "α";
-            label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label16
-            // 
-            label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label16.Location = new System.Drawing.Point(293, 133);
-            label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(13, 23);
-            label16.TabIndex = 27;
-            label16.Text = "2";
-            label16.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label17
-            // 
-            label17.Location = new System.Drawing.Point(242, 132);
-            label17.Name = "label17";
-            label17.Size = new System.Drawing.Size(56, 21);
-            label17.TabIndex = 26;
-            label17.Text = "α";
-            label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label18
-            // 
-            label18.Location = new System.Drawing.Point(242, 160);
-            label18.Name = "label18";
-            label18.Size = new System.Drawing.Size(58, 21);
-            label18.TabIndex = 28;
-            label18.Text = "S      /δ";
-            label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label19
-            // 
-            label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label19.Location = new System.Drawing.Point(266, 171);
-            label19.Name = "label19";
-            label19.Size = new System.Drawing.Size(19, 10);
-            label19.TabIndex = 29;
-            label19.Text = "0,2";
-            label19.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -917,6 +926,7 @@ namespace OperationForecasting
         private System.Windows.Forms.Button RegistryMaterialsButtonDelete;
         private System.Windows.Forms.Button RegistryMaterialsButtonEdit;
         private System.Windows.Forms.Button RegistryMaterialsButtonCreate;
+        private System.Windows.Forms.Button button2;
     }
 }
 

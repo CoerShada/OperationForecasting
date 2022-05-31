@@ -9,13 +9,11 @@ namespace OperationForecasting
 {
     public partial class FormMain : Form
     {
-        private Dictionary<string, TextBox> FormulesTextBoxes;
-        private Dictionary<string, Button> EditButtons;
+        private Dictionary<string, TextBox> _FormulesTextBoxes;
+        private Dictionary<string, Button> _EditButtons;
 
         public FormMain()
         {
-
-
             InitializeComponent();
 
             controls = new Control[] {
@@ -36,12 +34,12 @@ namespace OperationForecasting
             dataGridView1.Columns.Add("Ksm", "K с-м");
             dataGridView1.Columns.Add("rrt", "Оставшееся время эксплуатации");
             dataGridView1.Columns.Add("result", "Вывод");
-            updateGrid();
+            UpdateGrid();
             UpdateMaterialsLists();
             CanCreateMaterial();
             CanUpdateMaterial();
             CanDeleteMaterial();
-            FormulesTextBoxes = new Dictionary<string, TextBox>()
+            _FormulesTextBoxes = new Dictionary<string, TextBox>()
             {
                 { "SigmaL", RegistryMaterialsTextBoxFormulaSigmaL},
                 { "SigmaD", RegistryMaterialsTextBoxFormulaSigmaD},
@@ -50,7 +48,7 @@ namespace OperationForecasting
                 { "SDelta", RegistryMaterialsTextBoxFormulaSDelta}
             };
 
-            EditButtons = new Dictionary<string, Button>()
+            _EditButtons = new Dictionary<string, Button>()
             {
                 { "SigmaL", RegistryMaterialsButtonEditSigmaL},
                 { "SigmaD", RegistryMaterialsButtonEditSigmaD},
@@ -73,6 +71,7 @@ namespace OperationForecasting
         private void UpdateMaterialsLists()
         {
             RegistryMaterialsList.Items.Clear();
+            comboBoxMarka.Items.Clear();
             Dictionary<string, Material> materials = Handler.Instance.GetMaterials();
             string[] materialsNames = materials.Keys.ToArray();
             comboBoxMarka.Items.AddRange(materialsNames);
@@ -135,7 +134,7 @@ namespace OperationForecasting
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ButtonCount_Click(object sender, EventArgs e)
         {
             string materialName = comboBoxMarka.SelectedItem.ToString();
             Material material = Handler.Instance.GetMaterials()[materialName];
@@ -164,12 +163,12 @@ namespace OperationForecasting
 
         }
 
-        private void checkBoxChoose_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxChoose_CheckedChanged(object sender, EventArgs e)
         {
             HideSituationalComponents();
         }
 
-        private void buttonResidualTimeExploitation_Click(object sender, EventArgs e)
+        private void ButtonResidualTimeExploitation_Click(object sender, EventArgs e)
         {
 
 
@@ -204,7 +203,7 @@ namespace OperationForecasting
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox SenderCB = (CheckBox)sender;
             if (SenderCB.Checked)
@@ -217,12 +216,12 @@ namespace OperationForecasting
                 dateTimeFrom.Enabled = true;
                 dateTimeTo.Enabled = true;
             }
-            updateGrid();
+            UpdateGrid();
         }
 
 
 
-        private void updateGrid()
+        private void UpdateGrid()
         {
             Handler handler = Handler.Instance;
             dataGridView1.Rows.Clear();
@@ -248,12 +247,12 @@ namespace OperationForecasting
                 if (logs[i].A != 0) dataGridView1.Rows[rowNumber].Cells["A"].Value = logs[i].A;
                 if (logs[i].V != 0) dataGridView1.Rows[rowNumber].Cells["V"].Value = logs[i].V;
                 if (logs[i].MNI != 0) dataGridView1.Rows[rowNumber].Cells["MNI"].Value = logs[i].MNI;
-                dataGridView1.Rows[rowNumber].Cells["sigmaL"].Value = logs[i].AmplitudeOfOnternalStressFields;
-                dataGridView1.Rows[rowNumber].Cells["sigmaD"].Value = logs[i].ShearStresses;
-                dataGridView1.Rows[rowNumber].Cells["a1"].Value = logs[i].DeformationIndicator1;
-                dataGridView1.Rows[rowNumber].Cells["a2"].Value = logs[i].DeformationIndicator2;
-                dataGridView1.Rows[rowNumber].Cells["s0,2/delta"].Value = logs[i].RatioOfYieldStrengthToElongation;
-                dataGridView1.Rows[rowNumber].Cells["Ksm"].Value = logs[i].CoefStructuralMechanical;
+                dataGridView1.Rows[rowNumber].Cells["sigmaL"].Value = logs[i].SigmaL;
+                dataGridView1.Rows[rowNumber].Cells["sigmaD"].Value = logs[i].SigmaD;
+                dataGridView1.Rows[rowNumber].Cells["a1"].Value = logs[i].A1;
+                dataGridView1.Rows[rowNumber].Cells["a2"].Value = logs[i].A2;
+                dataGridView1.Rows[rowNumber].Cells["s0,2/delta"].Value = logs[i].SDelta;
+                dataGridView1.Rows[rowNumber].Cells["Ksm"].Value = logs[i].Ksm;
                 dataGridView1.Rows[rowNumber].Cells["rrt"].Value = logs[i].ResidualOperatingTime;
                 dataGridView1.Rows[rowNumber].Cells["result"].Value = logs[i].Result;
             }
@@ -271,7 +270,7 @@ namespace OperationForecasting
                 dateTimeFrom.Value = dateTimeTo.Value;
                 return;
             }
-            updateGrid();
+            UpdateGrid();
         }
 
         private void ButtonFromulaEdit_Click(object sender, EventArgs e)
@@ -280,7 +279,7 @@ namespace OperationForecasting
             Button button = (Button)sender;
 
             string name = button.Name.Substring("RegistryMaterialsButtonEdit".Length);
-            TextBox formulaTextBox = FormulesTextBoxes[name];
+            TextBox formulaTextBox = _FormulesTextBoxes[name];
             form.LoadFormule(formulaTextBox.Text);
 
             if (form.ShowDialog() == DialogResult.Yes)
