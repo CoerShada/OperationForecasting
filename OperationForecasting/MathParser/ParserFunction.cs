@@ -63,12 +63,10 @@ namespace MathParser
         {
             protected override double Evaluate(string data, ref int from)
             {
-                double num;
-                if (!Double.TryParse(Item, out num))
-                {
-                    throw new ArgumentException("Could not parse token [" + Item + "]");
-                }
-                return num;
+                decimal num;
+                Decimal.TryParse(Item, out num);
+                
+                return Convert.ToDouble(num);
             }
             public string Item { private get; set; }
         }

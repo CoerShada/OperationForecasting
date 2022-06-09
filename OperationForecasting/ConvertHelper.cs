@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OperationForecasting
+﻿namespace OperationForecasting
 {
     class ConvertHelper
     {
@@ -21,22 +15,22 @@ namespace OperationForecasting
 
         public static double RtoV(double R)
         {
-            return R / 0.018; //Константа расстояния (у нас 18мм)
+            return 0.018 / R; //Константа расстояния (у нас 18мм)
         }
 
         public static double VtoR(double V)
         {
-            return 0.018/V ; //Константа расстояния (у нас 18мм)
+            return 0.018 / V ; //Константа расстояния (у нас 18мм)
         }
 
-        public static double RtoA(double A)
-        {
-            return (5836.3148 - A)/1.1573;
-        }
-
-        public static double AtoR(double R)
+        public static double RtoA(double R)
         {
             return 5836.3148 - 1.1573 * R;
+        }
+
+        public static double AtoR(double A)
+        {
+            return (5836.3148 - A) / 1.1573;
         }
     }
 }

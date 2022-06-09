@@ -47,7 +47,7 @@ namespace OperationForecasting
             this.buttonAddSmallerOrEquals = new System.Windows.Forms.Button();
             this.buttonAddLargerOrEquals = new System.Windows.Forms.Button();
             this.buttonAddNotEquals = new System.Windows.Forms.Button();
-            this.buttonEquals = new System.Windows.Forms.Button();
+            this.buttonAddEquals = new System.Windows.Forms.Button();
             this.buttonAddSmaller = new System.Windows.Forms.Button();
             this.buttonAddLarger = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -91,7 +91,7 @@ namespace OperationForecasting
             this.groupBoxAdd.Controls.Add(this.buttonAddSmallerOrEquals);
             this.groupBoxAdd.Controls.Add(this.buttonAddLargerOrEquals);
             this.groupBoxAdd.Controls.Add(this.buttonAddNotEquals);
-            this.groupBoxAdd.Controls.Add(this.buttonEquals);
+            this.groupBoxAdd.Controls.Add(this.buttonAddEquals);
             this.groupBoxAdd.Controls.Add(this.buttonAddSmaller);
             this.groupBoxAdd.Controls.Add(this.buttonAddLarger);
             this.groupBoxAdd.Controls.Add(this.label3);
@@ -262,7 +262,7 @@ namespace OperationForecasting
             this.buttonAddSmallerOrEquals.TabIndex = 21;
             this.buttonAddSmallerOrEquals.Text = "≤";
             this.buttonAddSmallerOrEquals.UseVisualStyleBackColor = true;
-            this.buttonAddSmallerOrEquals.Click += new System.EventHandler(this.buttonAddLogicalOperator_Click);
+            this.buttonAddSmallerOrEquals.Click += new System.EventHandler(this.ButtonAddLogicalOperator_Click);
             // 
             // buttonAddLargerOrEquals
             // 
@@ -272,7 +272,7 @@ namespace OperationForecasting
             this.buttonAddLargerOrEquals.TabIndex = 20;
             this.buttonAddLargerOrEquals.Text = "≥";
             this.buttonAddLargerOrEquals.UseVisualStyleBackColor = true;
-            this.buttonAddLargerOrEquals.Click += new System.EventHandler(this.buttonAddLogicalOperator_Click);
+            this.buttonAddLargerOrEquals.Click += new System.EventHandler(this.ButtonAddLogicalOperator_Click);
             // 
             // buttonAddNotEquals
             // 
@@ -282,17 +282,17 @@ namespace OperationForecasting
             this.buttonAddNotEquals.TabIndex = 19;
             this.buttonAddNotEquals.Text = "≠\r\n";
             this.buttonAddNotEquals.UseVisualStyleBackColor = true;
-            this.buttonAddNotEquals.Click += new System.EventHandler(this.buttonAddLogicalOperator_Click);
+            this.buttonAddNotEquals.Click += new System.EventHandler(this.ButtonAddLogicalOperator_Click);
             // 
-            // buttonEquals
+            // buttonAddEquals
             // 
-            this.buttonEquals.Location = new System.Drawing.Point(98, 309);
-            this.buttonEquals.Name = "buttonEquals";
-            this.buttonEquals.Size = new System.Drawing.Size(40, 40);
-            this.buttonEquals.TabIndex = 18;
-            this.buttonEquals.Text = "=";
-            this.buttonEquals.UseVisualStyleBackColor = true;
-            this.buttonEquals.Click += new System.EventHandler(this.buttonAddLogicalOperator_Click);
+            this.buttonAddEquals.Location = new System.Drawing.Point(98, 309);
+            this.buttonAddEquals.Name = "buttonAddEquals";
+            this.buttonAddEquals.Size = new System.Drawing.Size(40, 40);
+            this.buttonAddEquals.TabIndex = 18;
+            this.buttonAddEquals.Text = "=";
+            this.buttonAddEquals.UseVisualStyleBackColor = true;
+            this.buttonAddEquals.Click += new System.EventHandler(this.ButtonAddLogicalOperator_Click);
             // 
             // buttonAddSmaller
             // 
@@ -302,7 +302,7 @@ namespace OperationForecasting
             this.buttonAddSmaller.TabIndex = 17;
             this.buttonAddSmaller.Text = "<";
             this.buttonAddSmaller.UseVisualStyleBackColor = true;
-            this.buttonAddSmaller.Click += new System.EventHandler(this.buttonAddLogicalOperator_Click);
+            this.buttonAddSmaller.Click += new System.EventHandler(this.ButtonAddLogicalOperator_Click);
             // 
             // buttonAddLarger
             // 
@@ -312,7 +312,7 @@ namespace OperationForecasting
             this.buttonAddLarger.TabIndex = 16;
             this.buttonAddLarger.Text = ">";
             this.buttonAddLarger.UseVisualStyleBackColor = true;
-            this.buttonAddLarger.Click += new System.EventHandler(this.buttonAddLogicalOperator_Click);
+            this.buttonAddLarger.Click += new System.EventHandler(this.ButtonAddLogicalOperator_Click);
             // 
             // label3
             // 
@@ -331,7 +331,7 @@ namespace OperationForecasting
             this.buttonAddPow.TabIndex = 14;
             this.buttonAddPow.Text = "^";
             this.buttonAddPow.UseVisualStyleBackColor = true;
-            this.buttonAddPow.Click += new System.EventHandler(this.buttonAddOperator_Click);
+            this.buttonAddPow.Click += new System.EventHandler(this.ButtonAddOperator_Click);
             // 
             // buttonAddDivide
             // 
@@ -341,7 +341,7 @@ namespace OperationForecasting
             this.buttonAddDivide.TabIndex = 13;
             this.buttonAddDivide.Text = "/";
             this.buttonAddDivide.UseVisualStyleBackColor = true;
-            this.buttonAddDivide.Click += new System.EventHandler(this.buttonAddOperator_Click);
+            this.buttonAddDivide.Click += new System.EventHandler(this.ButtonAddOperator_Click);
             // 
             // buttonAddMultiply
             // 
@@ -351,7 +351,7 @@ namespace OperationForecasting
             this.buttonAddMultiply.TabIndex = 12;
             this.buttonAddMultiply.Text = "*";
             this.buttonAddMultiply.UseVisualStyleBackColor = true;
-            this.buttonAddMultiply.Click += new System.EventHandler(this.buttonAddOperator_Click);
+            this.buttonAddMultiply.Click += new System.EventHandler(this.ButtonAddOperator_Click);
             // 
             // buttonAdde
             // 
@@ -381,7 +381,7 @@ namespace OperationForecasting
             this.buttonAddMinuse.TabIndex = 9;
             this.buttonAddMinuse.Text = "-";
             this.buttonAddMinuse.UseVisualStyleBackColor = true;
-            this.buttonAddMinuse.Click += new System.EventHandler(this.buttonAddOperator_Click);
+            this.buttonAddMinuse.Click += new System.EventHandler(this.ButtonAddOperator_Click);
             // 
             // buttonAddPlus
             // 
@@ -391,7 +391,7 @@ namespace OperationForecasting
             this.buttonAddPlus.TabIndex = 8;
             this.buttonAddPlus.Text = "+";
             this.buttonAddPlus.UseVisualStyleBackColor = true;
-            this.buttonAddPlus.Click += new System.EventHandler(this.buttonAddOperator_Click);
+            this.buttonAddPlus.Click += new System.EventHandler(this.ButtonAddOperator_Click);
             // 
             // label2
             // 
@@ -479,6 +479,9 @@ namespace OperationForecasting
             this.TextBoxEditor.Name = "TextBoxEditor";
             this.TextBoxEditor.Size = new System.Drawing.Size(532, 542);
             this.TextBoxEditor.TabIndex = 1;
+            this.TextBoxEditor.Click += new System.EventHandler(this.TextBoxEditor_CursorChanged);
+            this.TextBoxEditor.CursorChanged += new System.EventHandler(this.TextBoxEditor_CursorChanged);
+            this.TextBoxEditor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxEditor_KeyPress);
             // 
             // ButtonSave
             // 
@@ -526,7 +529,7 @@ namespace OperationForecasting
         private System.Windows.Forms.Button buttonAddSmallerOrEquals;
         private System.Windows.Forms.Button buttonAddLargerOrEquals;
         private System.Windows.Forms.Button buttonAddNotEquals;
-        private System.Windows.Forms.Button buttonEquals;
+        private System.Windows.Forms.Button buttonAddEquals;
         private System.Windows.Forms.Button buttonAddSmaller;
         private System.Windows.Forms.Button buttonAddLarger;
         private System.Windows.Forms.Label label3;

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace OperationForecasting
 {
@@ -42,18 +43,17 @@ namespace OperationForecasting
             Dictionary<string, double> values = new Dictionary<string, double>();
             if (FSigmaL.Contains("R"))
             {
-                double R = Math.Round(ConvertHelper.VtoR(V), 5);
+                double R = ConvertHelper.VtoR(V);
                 values.Add("R", R);
 
             }
             else
             {
-                V = Math.Round(V, 5);
                 values.Add("V", V);
             }
             values.Add("K", K);
-
-            return Parser.LoadAndCalculate(FSigmaL, values);
+            double result = Parser.LoadAndCalculate(FSigmaL, values);
+            return result;  //Корректно
         }
 
         /// <summary>
@@ -65,18 +65,18 @@ namespace OperationForecasting
             Dictionary<string, double> values = new Dictionary<string, double>();
             if (FSigmaD.Contains("R"))
             {
-                double R = Math.Round(ConvertHelper.AtoR(A), 5);
+                double R = ConvertHelper.AtoR(A);
 
                 values.Add("R", R);
             }
             else
             {
-                A = Math.Round(A, 5);
                 values.Add("A", A);
             }
             values.Add("K", K);
 
-            return Parser.LoadAndCalculate(FSigmaD, values);
+            double result = Parser.LoadAndCalculate(FSigmaD, values);
+            return result; //Корректно
         }
 
         /// <summary>
@@ -88,17 +88,16 @@ namespace OperationForecasting
             Dictionary<string, double> values = new Dictionary<string, double>();
             if (FA1.Contains("Kzat"))
             {
-                double Kzat = Math.Round(ConvertHelper.MNItoK(MNI), 5);
+                double Kzat = ConvertHelper.MNItoK(MNI);
                 values.Add("Kzat", Kzat);
             }
             else
             {
-                MNI = Math.Round(ConvertHelper.MNItoK(MNI), 5);
                 values.Add("MNI", MNI);
             }
             values.Add("K", K);
-
-            return Parser.LoadAndCalculate(FA1, values);
+            double result = Parser.LoadAndCalculate(FA1, values);
+            return result; //Корректно
         }
 
         /// <summary>
@@ -110,17 +109,17 @@ namespace OperationForecasting
             Dictionary<string, double> values = new Dictionary<string, double>();
             if (FA2.Contains("Kzat"))
             {
-                double Kzat = Math.Round(ConvertHelper.MNItoK(MNI), 5);
+                double Kzat = ConvertHelper.MNItoK(MNI);
                 values.Add("Kzat", Kzat);
             }
             else
             {
-                MNI = Math.Round(ConvertHelper.MNItoK(MNI), 5);
                 values.Add("MNI", MNI);
             }
             values.Add("K", K);
 
-            return Parser.LoadAndCalculate(FA2, values);
+            double result = Parser.LoadAndCalculate(FA2, values);
+            return result; //Корректно
         }
 
         /// <summary>
@@ -132,33 +131,33 @@ namespace OperationForecasting
             Dictionary<string, double> values = new Dictionary<string, double>();
             if (FSDelta.Contains("Kzat"))
             {
-                double Kzat = Math.Round(ConvertHelper.MNItoK(MNI), 5);
+                double Kzat = ConvertHelper.MNItoK(MNI);
                 values.Add("Kzat", Kzat);
             }
             else
             {
-                MNI = Math.Round(ConvertHelper.MNItoK(MNI), 5);
+
                 values.Add("MNI", MNI);
             }
             values.Add("K", K);
 
-            return Parser.LoadAndCalculate(FSDelta, values);
+            double result = Parser.LoadAndCalculate(FSDelta, values);
+            return result; //Корректно
         }
 
         /// <summary>
         /// Структурно-механический критерий
         /// </summary>
         /// <param name="MNI">интенсивность магнитного шума, б.в</param>
-        public double CoefStructuralMechanical(double sigmaL, double sigmaD, double a1, double a2, double SGamma)
+        public double CoefStructuralMechanical(double sigmaL, double sigmaD, double a1, double a2, double SDelta)
         {
-
-            return (sigmaL / sigmaD) * ((a2 - a1) / (a1 + a2) * Math.Log(SGamma));
+            double Ksm = (sigmaL / sigmaD) * ((a2 - a1) / (a1 + a2)) * Math.Log(SDelta);
+            return Ksm;
         }
 
-        public double RemainingRunningTime(double CurrentTime, double sigmaL, double sigmaD, double a1, double a2, double SGamma)
+        public double RemainingRunningTime(double CurrentTime, double Kcm)
         {
-            double Kcm = CoefStructuralMechanical(sigmaL, sigmaD, a1, a2, SGamma);
-            return (CurrentTime * (this.K - Kcm)) / Kcm;
+            return (CurrentTime * (this.K - Kcm)) / this.K;
         }
 
         public string GetName()

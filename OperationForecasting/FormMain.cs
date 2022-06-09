@@ -95,7 +95,7 @@ namespace OperationForecasting
         private void CanCreateMaterial()
         {
             string name = RegistryMaterialsTextBoxName.Text.Trim();
-            if (RegistryMaterialsList.SelectedIndex > 0 && CorrectFields() && !RegistryMaterialsList.Items.Contains(name))
+            if (CorrectFields() && !RegistryMaterialsList.Items.Contains(name))
             {
                 RegistryMaterialsButtonCreate.Enabled = true;
 
@@ -109,7 +109,7 @@ namespace OperationForecasting
         private void CanUpdateMaterial()
         {
 
-            if (RegistryMaterialsList.SelectedIndex > 0 && CorrectFields())
+            if (RegistryMaterialsList.SelectedIndex >= 0 && CorrectFields())
             {
                 RegistryMaterialsButtonEdit.Enabled = true;
 
@@ -123,7 +123,7 @@ namespace OperationForecasting
         private void CanDeleteMaterial()
         {
 
-            if (RegistryMaterialsList.SelectedIndex > 0)
+            if (RegistryMaterialsList.SelectedIndex >= 0)
             {
                 RegistryMaterialsButtonDelete.Enabled = true;
 
@@ -145,7 +145,7 @@ namespace OperationForecasting
                 double R = double.Parse(strR, new NumberFormatInfo { NumberDecimalSeparator = "." });
                 string strK = textBoxK.Text.Replace(',', '.').Trim();
                 double K = double.Parse(strK, new NumberFormatInfo { NumberDecimalSeparator = "." });
-                labelKSM.Text = Convert.ToString(Handler.Instance.CoefStructuralMechanical(material, ConvertHelper.RtoV(R), ConvertHelper.KtoMNI(K)));
+                labelKSM.Text = Convert.ToString(Handler.Instance.CoefStructuralMechanical(material, R, K));
             }
             else
             {
@@ -158,7 +158,8 @@ namespace OperationForecasting
 
                 string strMNI = textBoxMNI.Text.Replace(',', '.').Trim();
                 double MNI = double.Parse(strMNI, new NumberFormatInfo { NumberDecimalSeparator = "." });
-                labelKSM.Text = Convert.ToString(Handler.Instance.CoefStructuralMechanical(material, V, MNI, A));
+                string Ksm = Handler.Instance.CoefStructuralMechanical(material, V, MNI, A).ToString("F", CultureInfo.CreateSpecificCulture("eu-ES"));
+                labelKSM.Text = Ksm;
             }
 
         }
@@ -184,8 +185,10 @@ namespace OperationForecasting
                 double R = double.Parse(strR, new NumberFormatInfo { NumberDecimalSeparator = "." });
                 string strK = textBoxK.Text.Replace(',', '.').Trim();
                 double K = double.Parse(strK, new NumberFormatInfo { NumberDecimalSeparator = "." });
-                labelKSM.Text = Convert.ToString(handler.CoefStructuralMechanical(material, ConvertHelper.RtoV(R), ConvertHelper.KtoMNI(K)));
-                labelRRT.Text = handler.GetOutMessage(material, currentTime, ConvertHelper.RtoV(R), ConvertHelper.KtoMNI(K));
+                string Ksm = Handler.Instance.CoefStructuralMechanical(material, R, K).ToString("G", CultureInfo.CreateSpecificCulture("eu-ES"));
+
+                labelKSM.Text = Ksm;
+                labelRRT.Text = handler.GetOutMessage(material, currentTime, R, K);
             }
             else
             {
@@ -196,7 +199,8 @@ namespace OperationForecasting
 
                 string strMNI = textBoxMNI.Text.Replace(',', '.').Trim();
                 double MNI = double.Parse(strMNI, new NumberFormatInfo { NumberDecimalSeparator = "." });
-                labelKSM.Text = Convert.ToString(handler.CoefStructuralMechanical(material, V, MNI, A));
+                string Ksm = Handler.Instance.CoefStructuralMechanical(material, V, MNI, A).ToString("G", CultureInfo.CreateSpecificCulture("eu-ES"));
+                labelKSM.Text = Ksm;
                 labelRRT.Text = handler.GetOutMessage(material, currentTime, V, MNI, A);
             }
 

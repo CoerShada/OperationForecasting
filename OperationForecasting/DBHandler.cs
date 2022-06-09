@@ -60,8 +60,10 @@ namespace OperationForecasting
         public void AddLog(Log record)
         {
             Context.Logs.Add(record);
-            Context.SaveChanges();
-            Console.WriteLine("Saved!");
+            if (record.ValuesIsCorrect())
+            {
+                Context.SaveChanges();
+            }
 
         }
 

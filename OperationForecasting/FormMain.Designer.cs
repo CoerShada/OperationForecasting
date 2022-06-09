@@ -440,7 +440,7 @@ namespace OperationForecasting
             // 
             this.labelRRT.Location = new System.Drawing.Point(16, 218);
             this.labelRRT.Name = "labelRRT";
-            this.labelRRT.Size = new System.Drawing.Size(291, 38);
+            this.labelRRT.Size = new System.Drawing.Size(291, 51);
             this.labelRRT.TabIndex = 21;
             // 
             // checkBoxChoose
@@ -526,6 +526,7 @@ namespace OperationForecasting
             this.button2.TabIndex = 25;
             this.button2.Text = "Заполнить с датчика";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // tabPageDataBase
             // 

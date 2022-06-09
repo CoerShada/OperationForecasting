@@ -87,11 +87,11 @@ namespace MathParser
             {
                 string name = values.Keys.ToArray()[i];
                 string value = values.Values.ToArray()[i].ToString("F", CultureInfo.CreateSpecificCulture("eu-ES"));
-
+        
                 while (data.Contains(name))
                 {
                     
-                    data = data.Substring(0, data.IndexOf(name)) + value + data.Substring(data.IndexOf(name) + name.Length);
+                    data = data.Substring(0, data.IndexOf(name)) +"(" +value + ")" + data.Substring(data.IndexOf(name) + name.Length);
                 }
 
             }

@@ -49,5 +49,9 @@ namespace OperationForecasting
             this.Date = Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"));
         }
 
+        public bool ValuesIsCorrect()
+        {
+            return (!double.IsNaN(R) && !double.IsNaN(K) && !double.IsNaN(V) && !double.IsNaN(A) && !double.IsNaN(MNI) && !double.IsNaN(SigmaL) && !double.IsNaN(SigmaD) && !double.IsNaN(A1) && !double.IsNaN(A2) && !double.IsNaN(Ksm) && !double.IsNaN(ResidualOperatingTime) && !double.IsNaN(SDelta));
+        }
     }
 }

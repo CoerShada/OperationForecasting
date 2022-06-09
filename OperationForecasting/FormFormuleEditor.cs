@@ -15,6 +15,7 @@ namespace OperationForecasting
 
         string Operators = "()|+-/*^";
         string Numbers = "0123456789";
+        int SizeFocuse = 0;
 
         public FormFormuleEditor(string name)
         {
@@ -26,18 +27,21 @@ namespace OperationForecasting
         {
             Button button = (Button)sender;
             TextBox editor = this.TextBoxEditor;
-            if (editor.Text.Length == 0 || Operators.Contains(editor.Text[editor.Text.Length - 1]))
-            {
-                editor.Text += button.Name.Substring(button.Name.IndexOf("buttonAdd") + "buttonAdd".Length);
-                editor.SelectionStart = editor.Text.Length;
-                editor.Focus();
+
+            string var = button.Name.Substring(button.Name.IndexOf("buttonAdd") + "buttonAdd".Length);
+
+            editor.Text = editor.Text.Substring(0, editor.SelectionStart) + var + editor.Text.Substring(editor.SelectionStart);
+
+            this.SizeFocuse += var.Length;
+            TextBoxEditor.SelectionStart = this.SizeFocuse;
+            TextBoxEditor.Focus();
 
 
-            }
+            
         }
 
 
-        private void buttonAddOperator_Click(object sender, EventArgs e)
+        private void ButtonAddOperator_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             string symbol = "";
@@ -64,13 +68,14 @@ namespace OperationForecasting
             TextBox editor = this.TextBoxEditor;
             if (editor.Text.Length != 0 && !editor.Text[editor.Text.Length - 1].Equals("+") && !editor.Text[editor.Text.Length - 1].Equals("*") && !editor.Text[editor.Text.Length - 1].Equals("/") && !editor.Text[editor.Text.Length - 1].Equals("^"))
             {
-                editor.Text += symbol;
-                editor.SelectionStart = editor.Text.Length;
-                editor.Focus();
+                editor.Text = editor.Text.Substring(0, editor.SelectionStart) + " " +symbol + " " + editor.Text.Substring(editor.SelectionStart);
+                this.SizeFocuse+=3;
+                TextBoxEditor.SelectionStart = this.SizeFocuse;
+                TextBoxEditor.Focus();
             }
         }
 
-        private void buttonAddLogicalOperator_Click(object sender, EventArgs e)
+        private void ButtonAddLogicalOperator_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             string symbol = "";
@@ -81,7 +86,7 @@ namespace OperationForecasting
                     symbol = ">";
                     break;
                 case "Smaller":
-                    symbol = "-";
+                    symbol = "<";
                     break;
                 case "Equals":
                     symbol = "=";
@@ -107,10 +112,11 @@ namespace OperationForecasting
             }
             if (counter % 2 != 0)
             {
-                editor.Text += symbol;
-                editor.SelectionStart = editor.Text.Length;
+                editor.Text = editor.Text.Substring(0, editor.SelectionStart) + symbol + editor.Text.Substring(editor.SelectionStart);
+                
+                this.SizeFocuse+= symbol.Length;
+                editor.SelectionStart = SizeFocuse;
                 editor.Focus();
-
             }
 
         }
@@ -135,13 +141,13 @@ namespace OperationForecasting
                         formule = formule.Substring(0, i) + "\r\n" + formule.Substring(i);
                         i += 2;
                     }
-                    Console.WriteLine("find " + i);
-                    ;
                 }
 
                 i++;
             }
             TextBoxEditor.Text = formule;
+
+            this.SizeFocuse = formule.Length;
         }
 
         public string GetFormule()
@@ -152,28 +158,57 @@ namespace OperationForecasting
         private void ButtonAddNumber_Click(object sender, EventArgs e)
         {
             string text = TextBoxEditor.Text.Trim();
+
             if (text.Length == 0 || Numbers.Contains(text.Last()) || Operators.Contains(text.Last()))
             {
-                TextBoxEditor.Text += ((Button)sender).Text.Trim();
+                TextBoxEditor.Text = TextBoxEditor.Text.Substring(0, TextBoxEditor.SelectionStart) + ((Button)sender).Text.Trim() + TextBoxEditor.Text.Substring(TextBoxEditor.SelectionStart);
             }
+            this.SizeFocuse++;
+            TextBoxEditor.SelectionStart = this.SizeFocuse;
             TextBoxEditor.Focus();
-            TextBoxEditor.Select(TextBoxEditor.Text.Length, 0);
         }
 
         private void buttonAddIf_Click(object sender, EventArgs e)
         {
             string text = TextBoxEditor.Text.Trim();
-            if (true)
-            {
-                if (text.Length != 0)
-                {
-                    TextBoxEditor.Text += "\r\n";
-                }
 
-                TextBoxEditor.Text += "||\r\n";
-                TextBoxEditor.SelectionStart = TextBoxEditor.Text.Length - 2;
+
+            string condition = "";
+            if (text.Length != 0)
+            {
+                condition += "\r\n";
             }
+
+            condition += "||\r\n";
+            TextBoxEditor.Text = TextBoxEditor.Text.Substring(0, TextBoxEditor.SelectionStart) + condition + TextBoxEditor.Text.Substring(TextBoxEditor.SelectionStart);
+
+            this.SizeFocuse += condition.Length-3;
+            TextBoxEditor.SelectionStart = this.SizeFocuse;
             TextBoxEditor.Focus();
+        }
+
+        private void TextBoxEditor_CursorChanged(object sender, EventArgs e)
+        {
+            this.SizeFocuse = ((TextBox)sender).SelectionStart;
+
+        }
+
+        private void TextBoxEditor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            char number = e.KeyChar;
+
+            if (number == 8 )
+            {
+                this.SizeFocuse --;
+            }
+            else
+            {
+                this.SizeFocuse++;
+
+            }
+            Console.WriteLine(this.SizeFocuse);
+
         }
     }
 }
