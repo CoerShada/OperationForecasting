@@ -526,7 +526,6 @@ namespace OperationForecasting
             this.button2.TabIndex = 25;
             this.button2.Text = "Заполнить с датчика";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
             // 
             // tabPageDataBase
             // 
